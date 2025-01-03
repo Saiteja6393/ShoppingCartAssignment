@@ -61,3 +61,5 @@ while True:
     elif n==6:
         print("Thanks for Shopping")
         break
+    else:
+        print("enter valid choice")
