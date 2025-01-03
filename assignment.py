@@ -1,5 +1,5 @@
-
-menu={'Bread': 40, 'Cookies': 80, 'Butter': 120,'Cheese': 180,'Yoghurt': 60}
+menu=[['Bread', 40], ['Cookies', 80], ['Butter', 120], ['Cheese', 180], ['Yoghurt', 60]]
+# menu={'Bread': 40, 'Cookies': 80, 'Butter': 120,'Cheese': 180,'Yoghurt': 60}
 
 cart=[]
 
@@ -15,15 +15,17 @@ while True:
     n=int(input("Enter your choice:"))
     if n==1:
         print("Available MEnu Items:")
-        for i,j in menu.items():
-            print("Item Name:",i,"  ","Price:",j)
+        for i in menu:
+            print("Item Name:",i[0],"  ","Price:",i[1])
 
     elif n==2:
         item=input("Enter the Item Name to Add in the Cart:")
-        if item in menu:
-            q=int(input("enter the quantity:"))
-            cart.append([item,q,menu[item],q*menu[item]])
-            print(f"Item {item} added to the cart")
+
+        for i in menu:
+            if i[0] == item:
+                q=int(input("enter the quantity:"))
+                cart.append([i[0],q,i[1],q*i[1]])
+                print(f"Item {i} added to the cart")
         else:
             print("Item Invalid")
     
@@ -54,8 +56,10 @@ while True:
         else:
             print("cart:",cart)
 
+            total=0
             for i in cart:
-                total=i[3]
+                
+                total+=i[3]
             print("Total Bill:",total)
 
     elif n==6:
